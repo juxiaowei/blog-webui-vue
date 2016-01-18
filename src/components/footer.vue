@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <span class="text-white">© 2015 CodingHacker.</span>
-                        <span class="text-white">hades@codinghacker.com&nbsp;</span>
+                        <span class="text-white">hi@iamhades.com&nbsp;</span>
                         <span class="text-white"></span>
                         <span class="text-white">中国 &nbsp;上海 长宁区 中山公园&nbsp;</span>
                     </div>

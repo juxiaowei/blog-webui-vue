@@ -11,7 +11,6 @@ import aboutme from './views/aboutme.vue'
 import hack from './views/hack.vue'
 import articleinfo from './views/articleinfo.vue'
 window.Vue = Vue
-
 Vue.use(Router)
 var router = new Router({
     hashbang: false,
@@ -25,6 +24,7 @@ Object.keys(filters).forEach((k) => {
 });
 
 Vue.use(require('vue-resource'));
+Vue.http.options.root = '/root';
 Vue.use(require('./ext/vue_ext.js'));
 
 router.map({

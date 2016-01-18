@@ -75,29 +75,31 @@
             },
             route: {
                 data(transition) {
-                    return {
-                        articles: [{
-                            title: '关于Docker初级篇',
-                            pic: '/build/img/blog-masonry-2.jpg',
-                            tag:'docker',
-                            createDate: new Date()
-                        }, {
-                            title: '关于Docker初级篇',
-                            pic: '/build/img/blog-masonry-2.jpg',
-                            tag:'docker',
-                            createDate: new Date()
-                        }, {
-                            title: '关于Docker初级篇',
-                            pic: '/build/img/blog-masonry-2.jpg',
-                            tag:'docker',
-                            createDate: new Date()
-                        }, {
-                            title: '关于Docker初级篇',
-                            pic: '/build/img/blog-masonry-2.jpg',
-                            tag:'docker',
-                            createDate: new Date()
-                        }]
-                    }
+                    this.$http.get('/article/paging?start=0').then(function(data) {
+                        return {
+                            articles: [{
+                                title: '关于Docker初级篇',
+                                pic: '/build/img/blog-masonry-2.jpg',
+                                tag: 'docker',
+                                createDate: new Date()
+                            }, {
+                                title: '关于Docker初级篇',
+                                pic: '/build/img/blog-masonry-2.jpg',
+                                tag: 'docker',
+                                createDate: new Date()
+                            }, {
+                                title: '关于Docker初级篇',
+                                pic: '/build/img/blog-masonry-2.jpg',
+                                tag: 'docker',
+                                createDate: new Date()
+                            }, {
+                                title: '关于Docker初级篇',
+                                pic: '/build/img/blog-masonry-2.jpg',
+                                tag: 'docker',
+                                createDate: new Date()
+                            }]
+                        }
+                    })
                 }
             },
             compiled() {}

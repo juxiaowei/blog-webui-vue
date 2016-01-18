@@ -87,7 +87,7 @@ exports.install = function(Vue, options) {
     //拦截器
     Vue.http.interceptors.push({
         request: function(request) {
-            //TODO
+             //TODO
             return request;
         },
         response: function(response) {
