@@ -12,7 +12,11 @@
             <div class="col-sm-12">
 
                 <div v-for="time in datetime" class="timeline-event">
-                    <div v-bind:class="{'col-sm-6':true,'col-md-pull-6':($index%2)===0}">
+                    <div v-if="$index%2===0" class="col-sm-6 col-md-push-6">
+                        <h2>{{time}}</h2>
+                        <p>晴转雨</p>
+                    </div>
+                    <div v-else class="col-sm-6">
                         <h2>{{time}}</h2>
                         <p>晴转雨</p>
                     </div>
@@ -20,7 +24,14 @@
                         <i class="icon icon-telescope"></i>
                         <div class="vertical-line"></div>
                     </div>
-                    <div v-bind:class="{'col-sm-6':true, 'col-md-push-6':($index%2)===0}">
+                    <div v-if="$index%2===0" class="col-sm-6 col-md-pull-6">
+                        <p>
+                            <ul>
+                                <li v-for="read in readinfo[time]"><a href="{{read.url}}">{{read.title}}</a></li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div v-else class="col-sm-6">
                         <p>
                             <ul>
                                 <li v-for="read in readinfo[time]"><a href="{{read.url}}">{{read.title}}</a></li>

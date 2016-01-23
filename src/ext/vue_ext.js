@@ -83,10 +83,10 @@ exports.install = function(Vue, options) {
         }
     };
     
-    Vue.http.options.root = 'http://115.29.221.179:8116';
     //拦截器
     Vue.http.interceptors.push({
         request: function(request) {
+            request.url='http://115.29.221.179:8116'+request.url;
              //TODO
             return request;
         },
