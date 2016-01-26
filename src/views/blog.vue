@@ -49,7 +49,7 @@
             <div class="blog-masonry-container">
                 <div v-for="article in articles" class="col-md-4 col-sm-6 blog-masonry-item {{article.tag}}">
                     <div class="item-inner">
-                        <a v-link="{name:'articleinfo'}"><img alt="Blog Preview" src="/build/img/blog-masonry-2.jpg"></a>
+                        <a href="{{article.url}}"><img alt="Blog Preview" src="/build/img/blog-masonry-2.jpg"></a>
                         <div class="post-title">
                             <h2>
                             <a href="{{article.url}}">{{article.title}}</a>
@@ -68,37 +68,38 @@
 
 <script>
     export default {
-        data() {
+            data() {
                 return {
                     articles: []
                 }
             },
             route: {
                 data(transition) {
-                    this.$http.get('/article/paging?start=0').then(function(data) {
-                        return {
+                    this.$http.get('/api/article/paging?start=0').then(function(data) {
+                        transition.next({
                             articles: [{
-                                title: '关于Docker初级篇',
+                                title: '团队内部在践行的技术栈',
+                                pic: '/build/img/blog-masonry-2.jpg',
+                                url: '/build/article/yitaojishuzhan.html',
+                                tag: 'docker',
+                                createDate: new Date()
+                            }, {
+                                title: '何为Flux ？',
                                 pic: '/build/img/blog-masonry-2.jpg',
                                 tag: 'docker',
                                 createDate: new Date()
                             }, {
-                                title: '关于Docker初级篇',
+                                title: '关于Docker二',
                                 pic: '/build/img/blog-masonry-2.jpg',
                                 tag: 'docker',
                                 createDate: new Date()
                             }, {
-                                title: '关于Docker初级篇',
-                                pic: '/build/img/blog-masonry-2.jpg',
-                                tag: 'docker',
-                                createDate: new Date()
-                            }, {
-                                title: '关于Docker初级篇',
+                                title: '关于Docker一',
                                 pic: '/build/img/blog-masonry-2.jpg',
                                 tag: 'docker',
                                 createDate: new Date()
                             }]
-                        }
+                        })
                     })
                 }
             },
