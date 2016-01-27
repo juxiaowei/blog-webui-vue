@@ -38,7 +38,7 @@
                         </span>
                     </li>
                     <li data-filter=".other">
-                        <span>其他
+                        <span @click='test()'>其他
                             <br>
                         </span>
                     </li>
@@ -106,6 +106,52 @@
                     })
                 }
             },
-            compiled() {}
+            compiled(){},
+            methods:{
+               test(){
+                 var doms= document.getElementsByClassName('blog-masonry-item')
+                 for(var i=0;i<doms.length;i++){
+                    doms[i].className='col-md-4 col-sm-6 blog-masonry-item fadeInUp'
+                 }
+               }
+            }
     }
 </script>
+
+<style type="text/css">
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+}
+
+@-webkit-keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(20px);
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(20px);
+        -ms-transform: translateY(20px);
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+</style>
