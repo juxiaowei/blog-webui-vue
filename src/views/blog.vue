@@ -46,8 +46,22 @@
             </div>
         </div>
         <div class="row">
-            <div class="blog-masonry-container">
-                <div v-for="article in articles" class="col-md-4 col-sm-6 blog-masonry-item {{article.tag}}">
+            <div class="blog-masonry-container flow-grid">
+                <div v-for="list in articles" class="flow-grid-col col-xs-12 col-sm-6 col-md-4 col-lg-3 blog-masonry-item fadeInUp animated">
+                     <div v-for="article in list" class="item-inner">
+                        <a href="{{article.url}}"><img class="item-img" :src="article.pic"></a>
+                        <div class="post-title">
+                            <a href="{{article.url}}">{{article.title}}</a>
+                            <div class="post-meta">
+                                <span class="sub alt-font">{{article.createDate|parsePubDate}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- <div v-for="article in articles" class="col-xs-12 col-sm-6 col-md-4 col-lg-3  blog-masonry-item {{article.tag}} fadeInUp animated">
                     <div class="item-inner">
                         <a href="{{article.url}}"><img alt="Blog Preview" src="/build/img/blog-masonry-2.jpg"></a>
                         <div class="post-title">
@@ -59,7 +73,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -77,7 +91,7 @@
                 data(transition) {
                     this.$http.get('/api/article/paging?start=0').then(function(data) {
                         transition.next({
-                            articles: [{
+                            articles: [[{
                                 title: '团队内部在践行的技术栈',
                                 pic: '/build/img/blog-masonry-2.jpg',
                                 url: '/build/article/yitaojishuzhan.html',
@@ -89,36 +103,108 @@
                                 url: '/build/article/fluxdelijie.html',
                                 tag: 'web',
                                 createDate: new Date()
-                            }, {
+                            }], [{
                                 title: '用Docker构建开发环境',
-                                pic: '/build/img/blog-masonry-2.jpg',
+                                pic: '/build/img/docker2.jpg',
                                 url: '/build/article/yongdockerkaifahuanjing.html',
                                 tag: 'docker',
                                 createDate: new Date()
                             }, {
                                 title: 'Mac下初尝Docker',
-                                pic: '/build/img/blog-masonry-2.jpg',
+                                pic: '/build/img/docker1.jpg',
                                 url: '/build/article/macxiachangshidocker.html',
                                 tag: 'docker',
                                 createDate: new Date()
-                            }]
+                            }],[{
+                                title: '团队内部在践行的技术栈',
+                                pic: '/build/img/blog-masonry-2.jpg',
+                                url: '/build/article/yitaojishuzhan.html',
+                                tag: '其他',
+                                createDate: new Date()
+                            }, {
+                                title: 'Flux到底是什么？',
+                                pic: '/build/img/blog-masonry-2.jpg',
+                                url: '/build/article/fluxdelijie.html',
+                                tag: 'web',
+                                createDate: new Date()
+                            }], [{
+                                title: '用Docker构建开发环境',
+                                pic: '/build/img/docker2.jpg',
+                                url: '/build/article/yongdockerkaifahuanjing.html',
+                                tag: 'docker',
+                                createDate: new Date()
+                            }, {
+                                title: 'Mac下初尝Docker',
+                                pic: '/build/img/docker1.jpg',
+                                url: '/build/article/macxiachangshidocker.html',
+                                tag: 'docker',
+                                createDate: new Date()
+                            }]]
                         })
                     })
                 }
             },
-            compiled(){},
+            compiled(){
+             
+            },
             methods:{
-               test(){
-                 var doms= document.getElementsByClassName('blog-masonry-item')
-                 for(var i=0;i<doms.length;i++){
-                    doms[i].className='col-md-4 col-sm-6 blog-masonry-item fadeInUp'
-                 }
-               }
+             
             }
     }
 </script>
 
 <style type="text/css">
+
+.post-title a{
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+@media (max-width: 700px) {
+  .post-title a{
+    font-size: 24px;
+  }
+}
+
+.item-inner{
+    padding-bottom: 20px;
+}
+
+.flow-grid{
+    overflow:hidden;
+    min-height: 600px;
+}
+
+.flow-grid .flow-grid-col:nth-child(2){
+    -webkit-animation-delay: 100ms;
+       -moz-animation-delay: 100ms;
+         -o-animation-delay: 100ms;
+            animation-delay: 100ms;
+}
+
+.flow-grid .flow-grid-col:nth-child(3){
+    -webkit-animation-delay: 200ms;
+       -moz-animation-delay: 200ms;
+         -o-animation-delay: 200ms;
+            animation-delay: 200ms;
+}
+
+.flow-grid .flow-grid-col:nth-child(4){
+    -webkit-animation-delay: 300ms;
+       -moz-animation-delay: 300ms;
+         -o-animation-delay: 300ms;
+            animation-delay: 300ms;
+}
+
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+}
+
 .fadeInUp {
     -webkit-animation-name: fadeInUp;
     animation-name: fadeInUp;
@@ -127,8 +213,8 @@
 @-webkit-keyframes fadeInUp {
     0% {
         opacity: 0;
-        -webkit-transform: translateY(20px);
-        transform: translateY(20px);
+        -webkit-transform: translateY(100px);
+        transform: translateY(100px);
     }
 
     100% {
@@ -141,9 +227,9 @@
 @keyframes fadeInUp {
     0% {
         opacity: 0;
-        -webkit-transform: translateY(20px);
-        -ms-transform: translateY(20px);
-        transform: translateY(20px);
+        -webkit-transform: translateY(100px);
+        -ms-transform: translateY(100px);
+        transform: translateY(100px);
     }
 
     100% {
