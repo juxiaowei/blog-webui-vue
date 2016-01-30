@@ -1,5 +1,5 @@
 <template>
- <soon />
+ <soon></soon>
 </template>
 
 <script>

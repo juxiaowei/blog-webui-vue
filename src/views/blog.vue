@@ -47,9 +47,9 @@
         </div>
         <div class="row">
             <div class="blog-masonry-container flow-grid">
-                <div v-for="list in articles" class="flow-grid-col col-xs-12 col-sm-6 col-md-4 col-lg-3 blog-masonry-item fadeInUp animated">
+                <div v-for="list in articles" @click="test()" class="flow-grid-col col-xs-12 col-sm-6 col-md-4 col-lg-3 blog-masonry-item fadeInUp animated">
                      <div v-for="article in list" class="item-inner">
-                        <a href="{{article.url}}"><img class="item-img" :src="article.pic"></a>
+                        <a><img class="item-img" :src="article.pic"></a>
                         <div class="post-title">
                             <a href="{{article.url}}">{{article.title}}</a>
                             <div class="post-meta">
@@ -148,12 +148,34 @@
              
             },
             methods:{
+                test(){
+                     var doms = document.getElementsByClassName('flow-grid-col');
+                     for(var i=0;i<doms.length;i++){
+                         doms[0].className='flow-grid-col col-xs-12 col-sm-6 col-md-4 col-lg-3 blog-masonry-item section-article section-user' 
+                     }
+                }
              
             }
     }
 </script>
 
 <style type="text/css">
+
+.section-article{
+    -webkit-transition: 500ms opacity cubic-bezier(.17,.67,.6,1.3);
+    transition: 500ms opacity cubic-bezier(.17,.67,.6,1.3);
+}
+
+.section-user{
+    position: relative;
+    display: block;
+    padding: 15px;
+    -webkit-transition: 1000ms -webkit-transform cubic-bezier(.17,.67,.6,1.3);
+    transition: 1000ms transform cubic-bezier(.17,.67,.6,1.3);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
 
 .post-title a{
     color: black;
