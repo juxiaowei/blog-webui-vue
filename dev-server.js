@@ -19,15 +19,16 @@ app.use(require('webpack-dev-middleware')(compiler, {
 // compilation error display
 app.use(require('webpack-hot-middleware')(compiler))
 
-app.get('/build/css/*.css', function(req, res) {
+app.get('/build/css/*', function(req, res) {
   res.sendFile(path.join(__dirname, req.url));
 });
-app.get('/build/img/*.jpg', function(req, res) {
+app.get('/build/img/*', function(req, res) {
   res.sendFile(path.join(__dirname, req.url));
 });
-app.get('/build/img/*.png', function(req, res) {
+app.get('/build/fonts/*', function(req, res) {
   res.sendFile(path.join(__dirname, req.url));
 });
+
 
 app.listen(8080, 'localhost', function(err) {
   if (err) {
