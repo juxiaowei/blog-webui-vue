@@ -54,6 +54,7 @@ const articles = [
 ]
 export default {
   getAllArticle(cb) {
+    //假装网络请求来的数据
     setTimeout(() => cb(articles), 100)
   }
 

@@ -27,14 +27,14 @@
                     <div v-if="$index%2===0" class="col-sm-6 col-md-pull-6">
                         <p>
                             <ul>
-                                <li v-for="read in readinfo[time]"><a href="{{read.url}}">{{read.title}}</a></li>
+                                <li v-for="read in historys[time]"><a href="{{read.url}}">{{read.title}}</a></li>
                             </ul>
                         </p>
                     </div>
                     <div v-else class="col-sm-6">
                         <p>
                             <ul>
-                                <li v-for="read in readinfo[time]"><a href="{{read.url}}">{{read.title}}</a></li>
+                                <li v-for="read in historys[time]"><a href="{{read.url}}">{{read.title}}</a></li>
                             </ul>
                         </p>
                     </div>
@@ -47,24 +47,19 @@
 </template>
 
 <script>
+    import store from '../store'
+    const { getAllHistory } = store.actions
     export default {
-            data() {
-                return {
-                    readinfo: {},
-                    datetime: []
-                }
+            computed:{
+                    historys(){
+                         return store.state.historys
+                    },
+                    datetime(){
+                         return store.state.datetime
+                    }
             },
-            route: {
-                data(transition) {
-                    this.$http.get('/api/readinfo/paging?start=0').then(function(data) {
-                        transition.next({
-                            readinfo: data.data.data.values,
-                            datetime: data.data.data.dates
-                        });
-                    });
-                }
-
-            },
-            compiled() {}
+            created() {
+                getAllHistory()
+            }
     }
 </script>

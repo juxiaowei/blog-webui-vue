@@ -4,9 +4,7 @@ import {
 from '../mutation-types'
 
 // initial state
-export const articleInitialState = {
-	articles: []
-}
+export const articleInitialState = []
 
 // mutations
 export const articleMutations = {
