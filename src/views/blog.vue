@@ -58,22 +58,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-                <!-- <div v-for="article in articles" class="col-xs-12 col-sm-6 col-md-4 col-lg-3  blog-masonry-item {{article.tag}} fadeInUp animated">
-                    <div class="item-inner">
-                        <a href="{{article.url}}"><img alt="Blog Preview" src="/build/img/blog-masonry-2.jpg"></a>
-                        <div class="post-title">
-                            <h2>
-                            <a href="{{article.url}}">{{article.title}}</a>
-                            </h2>
-                            <div class="post-meta">
-                                <span class="sub alt-font">{{article.createDate|parsePubDate}}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
@@ -81,81 +65,26 @@
 </template>
 
 <script>
+    import store from '../store'
+    const { getAllArticle } = store.actions
+
     export default {
-            data() {
-                return {
-                    articles: []
-                }
-            },
-            route: {
-                data(transition) {
-                    this.$http.get('/api/article/paging?start=0').then(function(data) {
-                        transition.next({
-                            articles: [[{
-                                title: '团队内部在践行的技术栈',
-                                pic: '/build/img/blog-masonry-2.jpg',
-                                url: '/build/article/yitaojishuzhan.html',
-                                tag: '其他',
-                                createDate: new Date()
-                            }, {
-                                title: 'Flux到底是什么？',
-                                pic: '/build/img/blog-masonry-2.jpg',
-                                url: '/build/article/fluxdelijie.html',
-                                tag: 'web',
-                                createDate: new Date()
-                            }], [{
-                                title: '用Docker构建开发环境',
-                                pic: '/build/img/docker2.jpg',
-                                url: '/build/article/yongdockerkaifahuanjing.html',
-                                tag: 'docker',
-                                createDate: new Date()
-                            }, {
-                                title: 'Mac下初尝Docker',
-                                pic: '/build/img/docker1.jpg',
-                                url: '/build/article/macxiachangshidocker.html',
-                                tag: 'docker',
-                                createDate: new Date()
-                            }],[{
-                                title: '团队内部在践行的技术栈',
-                                pic: '/build/img/blog-masonry-2.jpg',
-                                url: '/build/article/yitaojishuzhan.html',
-                                tag: '其他',
-                                createDate: new Date()
-                            }, {
-                                title: 'Flux到底是什么？',
-                                pic: '/build/img/blog-masonry-2.jpg',
-                                url: '/build/article/fluxdelijie.html',
-                                tag: 'web',
-                                createDate: new Date()
-                            }], [{
-                                title: '用Docker构建开发环境',
-                                pic: '/build/img/docker2.jpg',
-                                url: '/build/article/yongdockerkaifahuanjing.html',
-                                tag: 'docker',
-                                createDate: new Date()
-                            }, {
-                                title: 'Mac下初尝Docker',
-                                pic: '/build/img/docker1.jpg',
-                                url: '/build/article/macxiachangshidocker.html',
-                                tag: 'docker',
-                                createDate: new Date()
-                            }]]
-                        })
-                    })
-                }
-            },
-            compiled(){
-             
-            },
-            methods:{
-                test(){
-                     var doms = document.getElementsByClassName('flow-grid-col');
-                     for(var i=0;i<doms.length;i++){
-                         doms[0].className='flow-grid-col col-xs-12 col-sm-6 col-md-4 col-lg-3 blog-masonry-item section-article section-user' 
-                     }
-                }
-             
+        computed: {
+            articles() {
+                return store.state.articles
             }
+        },
+        created () {
+           getAllArticle()
+        },
+        methods: {
+            test() {
+                var doms = document.getElementsByClassName('flow-grid-col');
+                for (var i = 0; i < doms.length; i++) {
+                    doms[0].className = 'flow-grid-col col-xs-12 col-sm-6 col-md-4 col-lg-3 blog-masonry-item section-article section-user'
+                }
+            }
+        }
     }
 </script>
 

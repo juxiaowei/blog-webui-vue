@@ -28,6 +28,10 @@ app.get('/build/img/*', function(req, res) {
 app.get('/build/fonts/*', function(req, res) {
   res.sendFile(path.join(__dirname, req.url));
 });
+app.get('/build/article/*', function(req, res) {
+  res.sendFile(path.join(__dirname, req.url));
+});
+
 
 
 app.listen(8080, 'localhost', function(err) {

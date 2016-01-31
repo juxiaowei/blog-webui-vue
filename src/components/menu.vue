@@ -34,11 +34,6 @@
     </div>
 </template>
 
-<script>
-    export default {
-    }
-</script>
-
 <style type="text/css">
 .nav-container{
     background-color: white;

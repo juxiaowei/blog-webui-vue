@@ -1,10 +1,12 @@
 <template>
+<div>
   <!-- main view -->
   <menu></menu>
   <div class="main-container">
      <router-view  class="view"  transition="expand" transition-mode="out-in"></router-view>
   </div>
   <foot></foot>
+</div>
 </template>
 <script>
     import menu from './components/menu.vue'

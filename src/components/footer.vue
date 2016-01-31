@@ -21,11 +21,6 @@
     </div>
 </template>
 
-<script>
-    export default {
-    }
-</script>
-
 <style type="text/css">
 .footer-container{
     bottom: 0px;
