@@ -6,6 +6,10 @@ import {
 }
 from './mutation/article'
 import {
+	routerInitialState, routerMutations
+}
+from './mutation/router'
+import {
 	datetimeInitialState, historyInitialState, historyMutations
 }
 from './mutation/history'
@@ -22,13 +26,15 @@ const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
 	state: {
+		url:routerInitialState,
+		params:'',
 		articles: articleInitialState,
 		historys: historyInitialState,
 		datetime: datetimeInitialState,
 		shares: shareInitialState
 	},
 	actions,
-	mutations: [articleMutations, historyMutations, shareMutations],
-	strict: true,
+	mutations: [routerMutations,articleMutations, historyMutations, shareMutations],
+	strict: debug,
 	middlewares: debug ? [Vuex.createLogger()] : []
 })

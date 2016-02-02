@@ -1,8 +1,17 @@
 import {
-  articleService, historyService,shareService
+  routerService, articleService, historyService, shareService
 }
 from '../service'
 import * as types from './mutation-types'
+
+//记录路由
+export const setRouterX = ({
+  dispatch
+}, trasition) => {
+  routerService.setRouter((trasition) => {
+    dispatch(types.SWITCH_ROUTER, trasition)
+  })
+}
 
 //发布文章
 export const getAllArticle = ({

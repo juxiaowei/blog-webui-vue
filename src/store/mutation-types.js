@@ -1,3 +1,5 @@
+//切换路由
+export const SWITCH_ROUTER = 'SWITCH_ROUTER'
 //获取我发表过的文章
 export const GET_MY_ARTICLE = 'GET_MY_ARTICLE'
 export const GET_MY_HISTORY = 'GET_MY_HISTORY'

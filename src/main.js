@@ -10,6 +10,9 @@ import share from './views/share.vue'
 import aboutme from './views/aboutme.vue'
 import hack from './views/hack.vue'
 import articleinfo from './views/articleinfo.vue'
+import store from './store'
+const { setRouterX } = store.actions
+
 window.Vue = Vue
 Vue.use(Router)
 var router = new Router({
@@ -62,10 +65,9 @@ router.map({
 
 });
 
-// router.beforeEach(function(transition) {
-//     router.app.optionshow = false;
-//     window.scrollTo(0, 0)
-//     transition.next()
-// })
+router.beforeEach(function(transition) {
+    setRouterX(transition)
+    transition.next()
+})
 
 router.start(App, '#app')
