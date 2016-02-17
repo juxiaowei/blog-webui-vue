@@ -1,5 +1,5 @@
 import {
-  routerService, articleService, historyService, shareService
+  routerService, articleService, historyService, shareService,commonService
 }
 from '../service'
 import * as types from './mutation-types'
@@ -40,4 +40,22 @@ export const getAllShare = ({
   shareService.getAllShare(shares => {
     dispatch(types.GET_MY_SHARE, shares)
   })
+}
+
+//显示进度条
+export const showLoading=({
+  dispatch
+}) => {
+   commonService.progressShow(data =>{
+     dispatch(types.PAGE_PROGRESS_SHOW, data)
+   })
+}
+
+//关闭进度条
+export const hideLoading=({
+  dispatch
+}) => {
+   commonService.progressHide(data =>{
+     dispatch(types.PAGE_PROGRESS_CLOSE, data)
+   })
 }

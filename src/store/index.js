@@ -17,6 +17,7 @@ import {
 	shareInitialState, shareMutations
 }
 from './mutation/share'
+import { progressMutations } from './mutation/common'
 
 
 Vue.use(Vuex)
@@ -26,15 +27,16 @@ const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
 	state: {
-		url:routerInitialState,
-		params:'',
+		url: routerInitialState,
+		params: '',
 		articles: articleInitialState,
 		historys: historyInitialState,
 		datetime: datetimeInitialState,
-		shares: shareInitialState
+		shares: shareInitialState,
+		isshow: false
 	},
 	actions,
-	mutations: [routerMutations,articleMutations, historyMutations, shareMutations],
+	mutations: [routerMutations, articleMutations, historyMutations, shareMutations, progressMutations],
 	strict: debug,
 	middlewares: debug ? [Vuex.createLogger()] : []
 })
