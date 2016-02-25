@@ -6,7 +6,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'build'),
-    publicPath: '/build/',
+    publicPath: 'http://iamhades.oss-cn-shanghai.aliyuncs.com/',
     filename: '[name].js'
   },
   resolve: {
@@ -49,7 +49,7 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'url',
         query: {
-          limit: 100000000000000,
+          limit: 10000,
           name: '[name].[ext]?[hash:7]'
         }
       }
