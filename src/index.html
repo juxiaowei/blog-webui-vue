@@ -13,13 +13,7 @@
     <link href="/build/css/icons.min.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="/build/css/theme.css" rel="stylesheet" type="text/css" media="all">
     <link href="/build/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">   
-     {% for (var css in o.htmlWebpackPlugin.files.css) { %}
-    <link href="{%=o.htmlWebpackPlugin.files.css[css] %}" rel="stylesheet">
-    {% } %}
 <body>
 <div id="app"></div>
-{% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
-    <script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
-{% } %}
 </body>
 </html>

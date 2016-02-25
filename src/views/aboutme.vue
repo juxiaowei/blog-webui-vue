@@ -94,7 +94,7 @@
                     </li>
                     <li>
                         <div class="col-sm-offset-3 col-md-5 col-sm-3">
-                            <img class="background-image" src="/build/img/hadesalipay.png">
+                            <img class="background-image" src="./../../build/img/hadesalipay.png">
                         </div>
                     </li>
                 </ul>

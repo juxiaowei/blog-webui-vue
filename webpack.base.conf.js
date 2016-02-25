@@ -12,13 +12,25 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.vue'],
     alias: {
-      'src': path.resolve(__dirname, '../src')
+      'src': path.resolve(__dirname, '/src')
     }
   },
   resolveLoader: {
-    root: path.join(__dirname, 'node_modules'),
+    root: path.join(__dirname, 'node_modules')
   },
   module: {
+    // preLoaders: [
+    //   {
+    //     test: /\.vue$/,
+    //     loader: 'eslint',
+    //     exclude: /node_modules/
+    //   },
+    //   {
+    //     test: /\.js$/,
+    //     loader: 'eslint',
+    //     exclude: /node_modules/
+    //   }
+    // ],
     loaders: [
       {
         test: /\.vue$/,
@@ -37,15 +49,14 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'url',
         query: {
-          limit: 10000,
+          limit: 100000000000000,
           name: '[name].[ext]?[hash:7]'
         }
       }
     ]
-  },
-  vue: {
-    loaders: {
-      js: 'babel'
-    }
   }
+  // ,
+  // eslint: {
+  //   formatter: require('eslint-friendly-formatter')
+  // }
 }

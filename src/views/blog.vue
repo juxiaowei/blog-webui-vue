@@ -49,6 +49,7 @@
             <div class="blog-masonry-container flow-grid">
                 <div v-for="list in articles" @click="test()" class="flow-grid-col col-xs-12 col-sm-6 col-md-4 col-lg-3 blog-masonry-item fadeInUp animated">
                      <div v-for="article in list" class="item-inner">
+                        <div class="shadow"></div>
                         <a><img class="item-img" :src="article.pic"></a>
                         <div class="post-title">
                             <a href="{{article.url}}">{{article.title}}</a>
@@ -89,6 +90,29 @@
 </script>
 
 <style type="text/css">
+
+.shadow{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 48%;
+    z-index: 300;
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+    color: #fff;
+    letter-spacing: 0.25em;
+    line-height: 1.2;
+    font-weight: 700;
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease-out, -webkit-transform 0.3s ease-out;
+    -moz-transition: opacity 0.3s ease-out, -moz-transform 0.3s ease-out;
+    -o-transition: opacity 0.3s ease-out, -o-transform 0.3s ease-out;
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.shadow:hover{
+    opacity: 1;
+}
 
 .section-article{
     -webkit-transition: 500ms opacity cubic-bezier(.17,.67,.6,1.3);
