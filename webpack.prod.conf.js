@@ -2,7 +2,8 @@ var webpack = require('webpack')
 var config = require('./webpack.base.conf')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-
+var AliyunossWebpackPlugin = require('aliyunoss-webpack-plugin')
+var path = require('path');
 // naming output files with hashes for better caching.
 // dist/index.html will be auto-generated with correct URLs.
 config.output.filename = '[name].[chunkhash].js'
@@ -15,8 +16,8 @@ var SOURCE_MAP = false
 config.devtool = SOURCE_MAP ? 'source-map' : false
 
 // generate loader string to be used with extract text plugin
-function generateExtractLoaders (loaders) {
-  return loaders.map(function (loader) {
+function generateExtractLoaders(loaders) {
+  return loaders.map(function(loader) {
     return loader + '-loader' + (SOURCE_MAP ? '?sourceMap' : '')
   }).join('!')
 }
@@ -31,7 +32,7 @@ var cssExtractLoaders = {
 
 config.vue = config.vue || {}
 config.vue.loaders = config.vue.loaders || {}
-Object.keys(cssExtractLoaders).forEach(function (key) {
+Object.keys(cssExtractLoaders).forEach(function(key) {
   config.vue.loaders[key] = cssExtractLoaders[key]
 })
 
@@ -54,16 +55,21 @@ config.plugins = (config.plugins || []).concat([
   // you can customize output by editing /src/index.html
   // see https://github.com/ampedandwired/html-webpack-plugin
   new HtmlWebpackPlugin({
-    filename: '../index.html',
+    filename: '../build/index.html',
     template: 'src/index.html',
     inject: true,
     minify: {
       removeComments: true,
       collapseWhitespace: true,
       removeAttributeQuotes: true
-      // more options:
-      // https://github.com/kangax/html-minifier#options-quick-reference
     }
+  }),
+  new AliyunossWebpackPlugin({
+    buildPath:__dirname+'/build',
+    region: 'xxxx',
+    accessKeyId: 'xxx',
+    accessKeySecret: 'xxxxx',
+    bucket: 'xxxx'
   })
 ])
 

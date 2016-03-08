@@ -17,7 +17,7 @@ window.Vue = Vue
 Vue.use(Router)
 var router = new Router({
     hashbang: false,
-    history: true,
+    history: false,
     saveScrollPosition: true
 });
 window.router = router;

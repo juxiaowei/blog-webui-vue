@@ -27,11 +27,7 @@
                         </ul>
                     </div>
                 </div>
-                <button @click="show">显示</button>
-                 <button @click="hide">关闭</button>
-                <div class="mobile-toggle">
-                    <i class="icon icon_menu">菜单</i>
-                </div>
+             
             </div>
         </nav>
     </div>

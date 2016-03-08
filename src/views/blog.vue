@@ -38,7 +38,7 @@
                         </span>
                     </li>
                     <li data-filter=".other">
-                        <span @click='test()'>其他
+                        <span>其他
                             <br>
                         </span>
                     </li>
@@ -47,7 +47,7 @@
         </div>
         <div class="row">
             <div class="blog-masonry-container flow-grid">
-                <div v-for="list in articles" @click="test()" class="flow-grid-col col-xs-12 col-sm-6 col-md-4 col-lg-3 blog-masonry-item fadeInUp animated">
+                <div v-for="list in articles" class="flow-grid-col col-xs-12 col-sm-6 col-md-4 col-lg-3 blog-masonry-item fadeInUp animated">
                      <div v-for="article in list" class="item-inner">
                         <div class="shadow"></div>
                         <a><img class="item-img" :src="article.pic"></a>
@@ -79,12 +79,7 @@
            getAllArticle()
         },
         methods: {
-            test() {
-                var doms = document.getElementsByClassName('flow-grid-col');
-                for (var i = 0; i < doms.length; i++) {
-                    doms[0].className = 'flow-grid-col col-xs-12 col-sm-6 col-md-4 col-lg-3 blog-masonry-item section-article section-user'
-                }
-            }
+
         }
     }
 </script>

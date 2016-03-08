@@ -1,8 +1,7 @@
 var webpack = require('webpack')
 var config = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-
-// eval-source-map is faster for development
+  // eval-source-map is faster for development
 config.devtool = 'eval-source-map'
 
 // add hot-reload related code to entry chunks
