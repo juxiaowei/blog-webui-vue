@@ -47,9 +47,8 @@
         </div>
         <div class="row">
             <div class="blog-masonry-container flow-grid">
-                <div v-for="list in articles" class="flow-grid-col col-xs-12 col-sm-6 col-md-4 col-lg-3 blog-masonry-item fadeInUp animated">
-                     <div v-for="article in list" class="item-inner">
-                        <div class="shadow"></div>
+                <div v-for="article in articles" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 blog-masonry-item fadeInUp animated">
+                        <a href="{{article.url}}"><div class="shadow"></div></a>
                         <a><img class="item-img" :src="article.pic"></a>
                         <div class="post-title">
                             <a href="{{article.url}}">{{article.title}}</a>
@@ -57,7 +56,6 @@
                                 <span class="sub alt-font">{{article.createDate|parsePubDate}}</span>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -90,7 +88,7 @@
     position: absolute;
     left: 0;
     width: 100%;
-    height: 48%;
+    height: 100%;
     z-index: 300;
     background-color: rgba(0,0,0,0.5);
     text-align: center;
