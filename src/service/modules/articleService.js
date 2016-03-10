@@ -1,5 +1,12 @@
 const articles = [
   {
+    title: '高姿态的使用CDN',
+    pic: 'http://www.ihades.me/blog-masonry-2.jpg',
+    url: 'http://www.ihades.me/gaozitaishiyongcdn.html',
+    tag: '其他',
+    createDate: new Date()
+  },
+  {
     title: '团队内部在践行的技术栈',
     pic: 'http://www.ihades.me/blog-masonry-2.jpg',
     url: 'http://www.ihades.me/yitaojishuzhan.html',
