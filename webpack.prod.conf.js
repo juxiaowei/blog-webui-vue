@@ -65,11 +65,12 @@ config.plugins = (config.plugins || []).concat([
     }
   }),
   new AliyunossWebpackPlugin({
-    buildPath:'your build path',
-    region: 'your region',
-    accessKeyId: 'your key',
-    accessKeySecret: 'your secret',
-    bucket: 'your bucket',
+    buildPath: __dirname + '/build',
+    region: 'oss-cn-shanghai',
+    accessKeyId: '4A4POIQRNVCqtvGs',
+    accessKeySecret: 'Lkhmjx7LTcOP5FcxMiMHpdOhldieiG',
+    bucket: 'iamhades',
+    deleteAll: true,
     getObjectHeaders: function(filename) {
       return {
         'Cache-Control': 'max-age=2592000'

@@ -1,3 +1,7 @@
 public/node_modules/*
 node_modules/*
 *.log
+build/*.js
+build/*.css
+build/*.png
+build/*.jpg
