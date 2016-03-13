@@ -45,22 +45,22 @@
 <script>
     import myinfo from '../components/myinfo.vue'
     export default {
-            components:{
-               myinfo
-            },
-            data() {
-                return {
-                    author: ''
-                }
-            },
-            route: {
-                data(transition) {
-                    return {
-                        author: 'hades!'
-                    }
-                }
-            },
-            compiled() {}
+      components: {
+        myinfo
+      },
+      data() {
+        return {
+          author: ''
+        }
+      },
+      route: {
+        data(transition) {
+          return {
+            author: 'hades!'
+          }
+        }
+      },
+      compiled() {}
     }
 </script>
 <style type="text/css">

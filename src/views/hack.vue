@@ -5,8 +5,8 @@
 <script>
     import soon from '../components/soon.vue'
     export default {
-        components: {
-            soon
-        }
+      components: {
+        soon
+      }
     }
 </script>

@@ -11,7 +11,9 @@ import aboutme from './views/aboutme.vue'
 import hack from './views/hack.vue'
 import articleinfo from './views/articleinfo.vue'
 import store from './store'
-const { setRouterX } = store.actions
+const {
+    setRouterX
+} = store.actions
 
 window.Vue = Vue
 Vue.use(Router)
@@ -19,16 +21,16 @@ var router = new Router({
     hashbang: false,
     history: false,
     saveScrollPosition: true
-});
-window.router = router;
+})
+window.router = router
 
 Object.keys(filters).forEach((k) => {
-    Vue.filter(k, filters[k]);
-});
+    Vue.filter(k, filters[k])
+})
 
-Vue.use(require('vue-resource'));
-Vue.http.options.root = '/root';
-Vue.use(require('./ext/vue_ext.js'));
+Vue.use(require('vue-resource'))
+Vue.http.options.root = '/root'
+Vue.use(require('./ext/vue_ext.js'))
 
 router.map({
     '/404': {
@@ -62,12 +64,10 @@ router.map({
         name: 'articleinfo',
         component: articleinfo
     }
-
-});
-
-router.beforeEach(function(transition) {
-    setRouterX(transition)
-    transition.next()
 })
 
+router.beforeEach(function(transition) {
+  setRouterX(transition)
+  transition.next()
+})
 router.start(App, '#app')

@@ -1,10 +1,10 @@
 import {
-  routerService, articleService, historyService, shareService,commonService
+  routerService, articleService, historyService, shareService, commonService
 }
 from '../service'
 import * as types from './mutation-types'
 
-//记录路由
+// 记录路由
 export const setRouterX = ({
   dispatch
 }, trasition) => {
@@ -13,7 +13,7 @@ export const setRouterX = ({
   })
 }
 
-//发布文章
+// 发布文章
 export const getAllArticle = ({
   dispatch
 }) => {
@@ -22,7 +22,7 @@ export const getAllArticle = ({
   })
 }
 
-//阅读轨迹
+// 阅读轨迹
 export const getAllHistory = ({
   dispatch
 }) => {
@@ -33,7 +33,7 @@ export const getAllHistory = ({
   })
 }
 
-//好东西分享
+// 好东西分享
 export const getAllShare = ({
   dispatch
 }) => {
@@ -42,20 +42,20 @@ export const getAllShare = ({
   })
 }
 
-//显示进度条
-export const showLoading=({
+// 显示进度条
+export const showLoading = ({
   dispatch
 }) => {
-   commonService.progressShow(data =>{
-     dispatch(types.PAGE_PROGRESS_SHOW, data)
-   })
+  commonService.progressShow(data => {
+    dispatch(types.PAGE_PROGRESS_SHOW, data)
+  })
 }
 
-//关闭进度条
-export const hideLoading=({
+// 关闭进度条
+export const hideLoading= ({
   dispatch
 }) => {
-   commonService.progressHide(data =>{
-     dispatch(types.PAGE_PROGRESS_CLOSE, data)
-   })
+  commonService.progressHide(data => {
+    dispatch(types.PAGE_PROGRESS_CLOSE, data)
+  })
 }

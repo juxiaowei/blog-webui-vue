@@ -9,8 +9,8 @@ export const articleInitialState = []
 // mutations
 export const articleMutations = {
 
-	[GET_MY_ARTICLE](state, articles) {
-		state.articles = articles
-	}
+  [GET_MY_ARTICLE](state, articles) {
+    state.articles = articles
+  }
 
 }

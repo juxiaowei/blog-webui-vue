@@ -9,11 +9,11 @@ export const routerInitialState = '/'
 // mutations
 export const routerMutations = {
 
-	[SWITCH_ROUTER](state, trasition) {
-		if (trasition) {
-			state.url = transition.to.path;
-			state.params = transition.to.params;
-		}
-	}
+  [SWITCH_ROUTER](state, trasition) {
+    if (trasition) {
+      state.url = trasition.to.path
+      state.params = trasition.to.params
+    }
+  }
 
 }

@@ -1,6 +1,7 @@
 export default {
-	setRouter(cb,trasition) {
-		cb(trasition);
-	}
+
+  setRouter(cb, trasition) {
+    cb(trasition)
+  }
 
 }

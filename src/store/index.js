@@ -19,7 +19,6 @@ import {
 from './mutation/share'
 import { progressMutations } from './mutation/common'
 
-
 Vue.use(Vuex)
 Vue.config.debug = true
 

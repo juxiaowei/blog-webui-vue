@@ -35,25 +35,23 @@
 
 <script>
     import store from '../store'
-    const { showLoading,hideLoading } = store.actions
+    const { showLoading, hideLoading } = store.actions
 
     export default {
-        computed: {
-            isshow() {
-                return store.state.isshow           
-            }
-        },
-        created () {
-            
-        },
-        methods: {
-            show() {
-               showLoading()
-            },
-            hide() {
-               hideLoading()
-            }
+      computed: {
+        isshow() {
+          return store.state.isshow
         }
+      },
+      created () {},
+      methods: {
+        show() {
+          showLoading()
+        },
+        hide() {
+          hideLoading()
+        }
+      }
     }
 </script>
 

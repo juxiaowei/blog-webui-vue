@@ -51,10 +51,10 @@
     const { getAllHistory } = store.actions
     export default {
             computed:{
-                    historys(){
+                    historys() {
                          return store.state.historys
                     },
-                    datetime(){
+                    datetime() {
                          return store.state.datetime
                     }
             },
