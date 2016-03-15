@@ -7,37 +7,37 @@
                     <li data-filter="*" class="active">
                         <span>All</span>
                     </li>
-                    <li data-filter=".node">
+                    <li>
                         <span>node
                             <br>
                         </span>
                     </li>
-                    <li data-filter=".java">
-                        <span>java
+                    <li>
+                        <span>云服务
                             <br>
                         </span>
                     </li>
-                    <li data-filter=".web">
+                    <li>
                         <span>web
                             <br>
                         </span>
                     </li>
-                    <li data-filter=".docker">
+                    <li>
                         <span>docker
                             <br>
                         </span>
                     </li>
-                    <li data-filter=".ios">
-                        <span>IOS
+                    <li>
+                        <span>项目
                             <br>
                         </span>
                     </li>
-                    <li data-filter=".database">
-                        <span>database
+                    <li>
+                        <span>架构
                             <br>
                         </span>
                     </li>
-                    <li data-filter=".other">
+                    <li>
                         <span>其他
                             <br>
                         </span>

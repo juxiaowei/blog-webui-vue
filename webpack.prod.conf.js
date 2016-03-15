@@ -66,10 +66,10 @@ config.plugins = (config.plugins || []).concat([
   }),
   new AliyunossWebpackPlugin({
     buildPath: __dirname + '/build',
-    region: 'oss-cn-shanghai',
-    accessKeyId: '4A4POIQRNVCqtvGs',
-    accessKeySecret: 'Lkhmjx7LTcOP5FcxMiMHpdOhldieiG',
-    bucket: 'iamhades',
+    region: 'your region',
+    accessKeyId: 'your accessKeyId',
+    accessKeySecret: 'your accessKeySecret',
+    bucket: 'your bucket',
     deleteAll: true,
     getObjectHeaders: function(filename) {
       return {
