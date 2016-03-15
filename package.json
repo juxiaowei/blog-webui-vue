@@ -4,7 +4,6 @@
   "description": "for developer vue",
   "main": "index.js",
   "scripts": {
-    "watch":"webpack --watch --config ./webpack.watch.conf.js",
     "dev": "node ./dev-server.js",
     "build": "rimraf dist && NODE_ENV=production webpack --progress --hide-modules --config ./webpack.prod.conf.js",
     "test": "karma start ./karma.conf.js --single-run"
