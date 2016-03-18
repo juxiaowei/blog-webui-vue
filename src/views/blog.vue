@@ -53,7 +53,7 @@
                         <div class="post-title">
                             <a href="{{article.url}}">{{article.title}}</a>
                             <div class="post-meta">
-                                <span class="sub alt-font">{{article.createDate|parsePubDate}}</span>
+                                <span class="sub alt-font">{{article.createDate}}</span>
                             </div>
                         </div>
                 </div>
