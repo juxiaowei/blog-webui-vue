@@ -36,6 +36,12 @@ exports.install = function(Vue, options) {
             get: function() {
                 return setHeaders
             }
+        },
+
+        $formate: {
+            get: function() {
+                return dateFormate
+            }
         }
 
     })
@@ -70,7 +76,7 @@ exports.install = function(Vue, options) {
     // request中设置header
     var setHeaders = function(json) {
         Object.keys(json).forEach(function(key) {
-            Vue.http.headers.common[key]=json[key]
+            Vue.http.headers.common[key] = json[key]
         })
     }
 
@@ -84,12 +90,27 @@ exports.install = function(Vue, options) {
         }
     }
 
+    // 为了兼容safari中的日期格式转换,而统一做的在月前加上0
+    var dateFormate = function(date) {
+        var dates = date.split('-')
+        var year = dates[0]
+        var month = dates[1]
+        var day = dates[2]
+        if (parseInt(month) < 10) {
+            month = '0' + month
+        }
+        if (parseInt(day) < 10) {
+            day = '0' + day
+        }
+        return year + '-' + month + '-' + day
+    }
+
     // 拦截器
     Vue.http.interceptors.push({
         request: function(request) {
             setHeaders({
-                'X-LC-Id': 'Your Id',
-                'X-LC-Key': 'Your key'
+                'X-LC-Id': 'cB93x9e2CEmssSyPqTKDXboL-gzGzoHsz',
+                'X-LC-Key': 'cVTzCS2XRM1YgSfks1k01tuH'
             })
             request.url = 'https://api.leancloud.cn' + request.url
                 // TODO

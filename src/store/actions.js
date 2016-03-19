@@ -20,7 +20,7 @@ export const getAllArticle = ({
   articleService.getAllArticle(articles => {
     // 因为迁移的关系，创建时间丢失，估在leancloud的数据库中特别增加了一个createDate字段，用来表示之前的创建时间
     articles = articles.sort(function(a, b) {
-      return new Date(b.createDate) - new Date(a.createDate)
+      return new Date(Vue.prototype.$formate(b.createDate)) - new Date(Vue.prototype.$formate(a.createDate))
     })
     dispatch(types.GET_MY_ARTICLE, articles)
   })
@@ -34,11 +34,11 @@ export const getAllHistory = ({
     var keys = {}
     var dates = []
     var values = {}
-    for (var i = 0; i < data.length; i++) {
-      var key = data[i].createTime
+    for (var i = data.length-1; i >= 0; i--) {
+      var key = Vue.prototype.$formate(data[i].createTime)
       var value = keys[key]
       if (!value) {
-        keys[key] = key
+        keys[key]=key
         dates.push(key)
         values[key] = []
         values[key].push(data[i])
@@ -79,3 +79,4 @@ export const hideLoading = ({
     dispatch(types.PAGE_PROGRESS_CLOSE, data)
   })
 }
+
