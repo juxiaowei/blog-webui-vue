@@ -3,17 +3,17 @@
 
 > - 用Vue做一个自己需要的博客。
 > - 教一下大家真实的现代前端项目是如何工程化，如何架构，如何构建出来的。
-> - 整个项目你会用到node的后台服务express, nosql的数据库mongodb，前端的开发框架vuejs,reactjs，状态管理vuex,redux，webpack的构建环境，mocha,karma的单元测试，Electron的桌面app开发，各种云服务的使用，感受一下基于nginx的微架构等技术。**O, it's great, you are a fullstack developer.**
+> - 教大家如何利用云构建一个免费且性能强大的动态博客。
 
 ###项目说明
 该项目是个人博客[iAmHades](http://www.iamhades.com)的前端源码，它属于博客系统的一部分，博客系统一共分4个部分:
 
 > - [基于VueJs构建的Blog前端页面部分](https://github.com/iAmHades/blog-webui-vue) 
-> - [提供base rest api的后台部分](https://github.com/iAmHades/blog)
-> - [使用antDesign＋Electron的博客内容管理系统](https://github.com/iAmHades/blog-admin-client)
+> - 利用[LeanCloud API](https://leancloud.cn/docs/rest_api.html) 作为服务后台，进行数据存储
+> - 网站管理后台部分利用LeanCloud提供的管理后台进行管理，其功能非常强大。
 > - [收藏阅读笔记的safari插件](https://github.com/iAmHades/blog-safari-plugin)
 
-该博客架构上采用前后端分离的开发开发模式，前端部分的页面服务全部构建在CDN上([使用CDN构建服务](https://github.com/iAmHades/articles/issues/1))，同时它借助一个[safari插件](https://github.com/iAmHades/blog-safari-plugin)，能够轻松收藏记录你阅读的文章到后台服务中，然后由前端的阅读轨迹模块呈现你读过的文章。自己[发表的文章](https://github.com/iAmHades/articles)，目前借助GitHub项目管理里面的issue进行发表，后台的[内容管理系统](https://github.com/iAmHades/blog-admin-client)只管理issue的标题头，地址，从而实现博客文章的简单发布。
+该博客架构上采用前后端分离的开发开发模式，前端部分的页面服务全部构建在CDN上([使用CDN构建服务](https://github.com/iAmHades/articles/issues/1))，同时它借助一个[safari插件](https://github.com/iAmHades/blog-safari-plugin)，能够轻松通过调用[LeanCloud API](https://leancloud.cn/docs/rest_api.html)收藏记录你阅读的文章，然后由前端的阅读轨迹模块通过调用[LeanCloud API](https://leancloud.cn/docs/rest_api.html)呈现你收录的文章。自己[发表的文章](https://github.com/iAmHades/articles)，目前借助GitHub项目管理里面的issue进行发表，LeanCloud本身提供了非常完成的管理后台，能够对网站内容完成管理，并且还会有每天的请求数统计等功能。由于整个博客完全借助云服务（CDN, LeanCloud API）完成，所以其实际上是无主机实例的博客，该博客的访问体验非常好，而且承受性能非常强劲，使得用户在前期访问量不大的情况下，能够免费运行，后期访问量起来后，依然能以很高的性价比继续使用服务，最关键的是对于站点所承受的用户量，你完全不用担心和顾及，CDN和LeanCloud 能为你提供理论上无限强大的性能，完全不会出现挂机的情况。这是你自己搭建服务器所不能比拟的巨大优势。
 ###关于项目的配置文件
 回到博客的前端部分，作为前端项目在构建开发，部署上线的时候需要考虑到如下几点：
 
@@ -59,8 +59,12 @@
 
     Vue.http.interceptors.push({
         request: function(request) {
-            request.url='http://115.29.221.179:8116'+request.url
-             // TODO
+            setHeaders({
+                'X-LC-Id': 'Your app id',
+                'X-LC-Key': 'Your app key'
+            })
+            request.url = 'https://api.leancloud.cn' + request.url
+                // TODO
             return request
         },
         response: function(response) {
@@ -68,7 +72,7 @@
             return response
         }
     })
-里面 **http://115.29.221.179:8116** 部分，请修改为你自己的地址。因为整个博客是前后端分离开发的，所以对于请求来说，存在跨域请求，其需要完整的请求路径。
+里面 **X-LC-Id**和**X-LC-Key** 部分，请修改为你自己的LeanCloud App参数
 
 ###代码检验
 引入eslint进行代码代码检验，并使用eslint-plugin-standard作为一个基础标准使用，然后根据自己喜好调整了部分要求，它们如下：
