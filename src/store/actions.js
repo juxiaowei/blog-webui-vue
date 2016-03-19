@@ -27,8 +27,23 @@ export const getAllHistory = ({
   dispatch
 }) => {
   historyService.getAllHistory(data => {
-    const historys = data.values
-    const datetime = data.dates
+    var keys = {}
+    var dates = []
+    var values = {}
+    for (var i = 0; i < data.length; i++) {
+      var key = data[i].createTime
+      var value = keys[key]
+      if (!value) {
+        keys[key] = key
+        dates.push(key)
+        values[key] = []
+        values[key].push(data[i])
+      } else {
+        values[key].push(data[i])
+      }
+    }
+    const historys = values
+    const datetime = keys
     dispatch(types.GET_MY_HISTORY, historys, datetime)
   })
 }
@@ -52,7 +67,7 @@ export const showLoading = ({
 }
 
 // 关闭进度条
-export const hideLoading= ({
+export const hideLoading = ({
   dispatch
 }) => {
   commonService.progressHide(data => {

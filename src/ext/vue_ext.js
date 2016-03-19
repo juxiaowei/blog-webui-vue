@@ -4,7 +4,7 @@ exports.install = function(Vue, options) {
 
         $prefixedEvent: {
             get: function() {
-               return prefixedEvent.bind(this)
+                return prefixedEvent.bind(this)
             }
         },
 
@@ -42,9 +42,9 @@ exports.install = function(Vue, options) {
 
     // localstorage的存储
     var h5setValue = function(key, value) {
-        window.localStorage.setItem(key, value)
-    }
-    // localstorage的查询
+            window.localStorage.setItem(key, value)
+        }
+        // localstorage的查询
     var h5getValue = function(key) {
         return window.localStorage.getItem(key)
     }
@@ -69,8 +69,9 @@ exports.install = function(Vue, options) {
 
     // request中设置header
     var setHeaders = function(json) {
-        var custom = Vue.http.headers.custom
-        Vue.http.headers.custom = Vue.util.extend(json, custom)
+        Object.keys(json).forEach(function(key) {
+            Vue.http.headers.common[key]=json[key]
+        })
     }
 
     // 监听各浏览器动画状态，以便回调 type为：animationstart animationiteration animationend
@@ -86,8 +87,12 @@ exports.install = function(Vue, options) {
     // 拦截器
     Vue.http.interceptors.push({
         request: function(request) {
-            request.url='http://115.29.221.179:8116'+request.url
-             // TODO
+            setHeaders({
+                'X-LC-Id': 'Your Id',
+                'X-LC-Key': 'Your key'
+            })
+            request.url = 'https://api.leancloud.cn' + request.url
+                // TODO
             return request
         },
         response: function(response) {
