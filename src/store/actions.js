@@ -42,9 +42,10 @@ export const getAllHistory = ({
         values[key].push(data[i])
       }
     }
-    const historys = values
-    const datetime = keys
-    dispatch(types.GET_MY_HISTORY, historys, datetime)
+    var keyAttr = Object.keys(keys).sort(function(a, b) {
+      return new Date(b) - new Date(a)
+    })
+    dispatch(types.GET_MY_HISTORY, values, keyAttr)
   })
 }
 
