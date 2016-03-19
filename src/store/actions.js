@@ -18,6 +18,10 @@ export const getAllArticle = ({
   dispatch
 }) => {
   articleService.getAllArticle(articles => {
+    // 因为迁移的关系，创建时间丢失，估在leancloud的数据库中特别增加了一个createDate字段，用来表示之前的创建时间
+    articles = articles.sort(function(a, b) {
+      return new Date(b.createDate) - new Date(a.createDate)
+    })
     dispatch(types.GET_MY_ARTICLE, articles)
   })
 }
