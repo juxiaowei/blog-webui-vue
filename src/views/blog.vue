@@ -84,6 +84,26 @@
 
 <style type="text/css">
 
+.item-img{
+    width: 100%;
+}
+
+.col-xs-12{
+    height: 350px;
+}
+
+.col-sm-6{
+   height: 350px;
+}
+
+.col-md-4{
+    height: 300px;
+}
+
+.col-lg-3 {
+    height:300px;
+}
+
 .shadow{
     position: absolute;
     left: 0;
