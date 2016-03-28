@@ -84,23 +84,23 @@
 
 <style type="text/css">
 
-.item-img{
+.flow-grid .item-img{
     width: 100%;
 }
 
-.col-xs-12{
+.flow-grid .col-xs-12{
     height: 350px;
 }
 
-.col-sm-6{
+.flow-grid .col-sm-6{
    height: 350px;
 }
 
-.col-md-4{
+.flow-grid .col-md-4{
     height: 300px;
 }
 
-.col-lg-3 {
+.flow-grid .col-lg-3 {
     height:300px;
 }
 
