@@ -74,4 +74,11 @@
    -webkit-transition:width 2s;
    -o-transition:width 2s;
 }
+
+@media (max-width: 550px) {
+  .nav-container{
+    display: none;
+  }
+}
+
 </style>

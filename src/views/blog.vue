@@ -86,6 +86,7 @@
 
 .flow-grid .item-img{
     width: 100%;
+    height: 180px;
 }
 
 .flow-grid .col-xs-12{
@@ -226,6 +227,21 @@
         -ms-transform: translateY(0);
         transform: translateY(0);
     }
+}
+
+@media (max-width: 550px) {
+  .blog-filters{
+    display: none;
+  }
+
+  .flow-grid .col-lg-3 {
+    height: 350px;
+  }
+
+  .flow-grid .item-img{
+    width: 100%;
+    height: 250px;
+}
 }
 
 </style>
