@@ -5,3 +5,4 @@ build/*.js
 build/*.css
 build/*.png
 build/*.jpg
+build/index.html

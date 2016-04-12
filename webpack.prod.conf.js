@@ -66,17 +66,16 @@ config.plugins = (config.plugins || []).concat([
   }),
   new AliyunossWebpackPlugin({
     buildPath: __dirname + '/build',
-    region: 'your region',
-    accessKeyId: 'your accessKeyId',
-    accessKeySecret: 'your accessKeySecret',
-    bucket: 'your bucket',
+    region: 'oss-cn-shanghai',
+    accessKeyId: '4A4POIQRNVCqtvGs',
+    accessKeySecret: 'Lkhmjx7LTcOP5FcxMiMHpdOhldieiG',
+    bucket: 'iamhades',
     deleteAll: true,
     getObjectHeaders: function(filename) {
       return {
         'Cache-Control': 'max-age=2592000'
       }
     }
-
   })
 ])
 

@@ -1,57 +1,74 @@
 <template>
-    <div class="nav-container">
-      <div class="black-navigate" v-bind:class="{'black-navigate-width':isshow}"></div>
-        <nav class="simple-bar open-nav">
-            <div class="container">
-                <div class="row nav-menu">
-                    <div class="col-md-3 col-sm-3 columns">
-                        <!-- <img class="logo logo-light" alt="Logo" src="#"> -->
-                    </div>
-                    <div class="col-md-9 col-sm-9 columns text-right">
-                        <ul class="menu">
-                            <li>
-                                <a v-link="{name:'blog'}" target="default">博文&nbsp;</a>
-                            </li>
-                            <li>
-                                <a v-link="{name:'timeline'}" target="default">阅读轨迹&nbsp;</a>
-                            </li>
-                            <!-- <li>
-                                <a v-link="{name:'share'}" target="default">好东西分享&nbsp;</a>
-                            </li>
-                            <li>
-                                <a v-link="{name:'hack'}" target="default">黑技术&nbsp;</a>
-                            </li> -->
-                            <li>
-                                <a v-link="{name:'aboutme'}" target="default">关于我&nbsp;</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-             
-            </div>
-        </nav>
+<div class="nav-container">
+  <div class="black-navigate"></div>
+  <nav class="simple-bar open-nav">
+    <div class="container">
+      <div class="row nav-menu" v-bind:class="{'nav-menu-show':isshowmenu}">
+        <div class="col-md-3 col-sm-3 columns">
+          <!-- <img class="logo logo-light" alt="Logo" src="#"> -->
+        </div>
+        <div class="col-md-9 col-sm-9 columns text-right">
+          <ul class="menu">
+            <li>
+              <a @click="go('/')" target="default">博文&nbsp;</a>
+            </li>
+            <li>
+              <a @click="go('/timeline')" target="default">阅读轨迹&nbsp;</a>
+            </li>
+            <!-- <li>
+              <a v-link="{name:'share'}" target="default">好东西分享&nbsp;</a>
+            </li>
+            <li>
+              <a v-link="{name:'hack'}" target="default">黑技术&nbsp;</a>
+            </li> -->
+            <li>
+              <a @click="go('/aboutme')" target="default">关于我&nbsp;</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mobile-toggle">
+        <i class="icon icon_menu" @click="showMenu"></i>
+      </div>
     </div>
+  </nav>
+</div>
 </template>
 
 <script>
     import store from '../store'
-    const { showLoading, hideLoading } = store.actions
+    const {
+      showLoading, hideLoading
+    } = store.actions
 
     export default {
-      computed: {
-        isshow() {
-          return store.state.isshow
-        }
-      },
-      created () {},
-      methods: {
-        show() {
-          showLoading()
+      data() {
+          return {
+            isshowmenu: false
+          }
         },
-        hide() {
-          hideLoading()
+        computed: {
+          isshow() {
+            return store.state.isshow
+          }
+        },
+        created() {},
+        methods: {
+          show() {
+              showLoading()
+            },
+            hide() {
+              hideLoading()
+            },
+            showMenu() {
+              this.isshowmenu = !this.isshowmenu
+            },
+            go(url) {
+              this.isshowmenu = false
+              window.router.go(url)
+            }
+
         }
-      }
     }
 </script>
 
@@ -76,9 +93,17 @@
 }
 
 @media (max-width: 550px) {
-  .nav-container{
+  .nav-container .nav-menu{
     display: none;
   }
+}
+
+.nav-menu-show{
+  display:block!important;
+}
+
+.mobile-toggle{
+  z-index: 1;
 }
 
 </style>

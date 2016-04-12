@@ -30,19 +30,7 @@ app.use(devMiddleware)
 // enable hot-reload and state-preserving
 // compilation error display
 app.use(hotMiddleware)
-
-app.get('/build/css/*', function(req, res) {
-  res.sendFile(path.join(__dirname, req.url));
-});
-app.get('/build/img/*', function(req, res) {
-  res.sendFile(path.join(__dirname, req.url));
-});
-app.get('/build/fonts/*', function(req, res) {
-  res.sendFile(path.join(__dirname, req.url));
-});
-app.get('/build/article/*', function(req, res) {
-  res.sendFile(path.join(__dirname, req.url));
-});
+app.use(express.static(__dirname + '/build')); 
 
 app.listen(8080, function (err) {
   if (err) {
